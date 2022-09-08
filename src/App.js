@@ -1,16 +1,24 @@
+import { useEffect, useState } from "react"
 import Form from "./components/Form"
 import Btns from "./components/Btns"
+import TodoList from "./components/TodoList"
 import "./App.css"
 
-function App() {
+export default function App() {
+  const [list, setList] = useState([])
+
+  function addTodo(ev, text) {
+    ev.preventDefault()
+    setList((prev) => {
+      return [...prev, text]
+    })
+  }
   return (
     <div className='App'>
       <h1 className='title'>Todo App</h1>
-      <Form />
+      <Form addTodo={addTodo} />
       <Btns />
-      {/* <TodoList /> */}
+      <TodoList list={list} />
     </div>
   )
 }
-
-export default App

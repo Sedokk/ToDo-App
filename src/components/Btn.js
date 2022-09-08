@@ -1,7 +1,5 @@
-import style from "./Btn.module.css"
+import style from "../css/Btn.module.css"
 
-function Btn(props) {
-  return <button className={style.btn}>{props.children}</button>
+export default function Btn({ children, mod }) {
+  return <button className={`${style.btn} ${style[mod]}`}>{children}</button>
 }
-
-export default Btn
