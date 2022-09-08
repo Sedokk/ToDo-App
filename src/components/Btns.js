@@ -1,10 +1,10 @@
 import Btn from "./Btn"
 import style from "../css/Btns.module.css"
 
-export default function Btns() {
+export default function Btns({ clearList, clearDones }) {
   return (
     <div className={style.wrapper}>
-      <Btn>
+      <Btn onClick={clearList}>
         <svg
           xmlns='http://www.w3.org/2000/svg'
           width='30'
@@ -20,7 +20,7 @@ export default function Btns() {
           />
         </svg>
       </Btn>
-      <Btn>
+      <Btn onClick={clearDones}>
         <svg
           height='30px'
           id='Layer_1'

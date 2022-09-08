@@ -1,0 +1,30 @@
+.wrapper {
+  width: 60vw;
+  padding: 30px 60px;
+  background-color: white;
+  transition: background-color 0.3s ease;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0 15px;
+}
+.wrapperDone {
+  width: 60vw;
+  padding: 30px 60px;
+  background-color: rgb(79, 192, 154);
+  transition: background-color 0.3s ease;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0 15px;
+}
+.text {
+  font-size: 22px;
+  flex-grow: 1;
+  transition: color 0.3s ease;
+}
+.wrapperDone > .text {
+  color: white;
+}

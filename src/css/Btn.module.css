@@ -1,0 +1,19 @@
+.btn {
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 20px;
+  background-color: white;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+}
+
+.btn:hover {
+  background-color: rgb(79, 192, 154);
+}
+
+.aquamarine {
+  background-color: aquamarine;
+}

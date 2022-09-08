@@ -8,7 +8,10 @@ export default function Form({ addTodo }) {
     <form
       className={style.form}
       onSubmit={(ev) => {
-        addTodo(ev, value)
+        ev.preventDefault()
+        if (!value) return
+        addTodo(value)
+        setValue("")
       }}
     >
       <input
