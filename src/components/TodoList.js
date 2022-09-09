@@ -4,7 +4,7 @@ export default function TodoList({ list, setList }) {
   return (
     <div className={style.wrapper}>
       {list.map((e) => (
-        <Todo text={e.text} key={e.id} data={e.id} setList={setList} />
+        <Todo todoObj={e} key={e.id} setList={setList} />
       ))}
     </div>
   )

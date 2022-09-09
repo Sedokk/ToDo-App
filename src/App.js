@@ -14,18 +14,31 @@ export default function App() {
       id: new Date().getTime(),
     }
     setList((prev) => {
-      return [...prev, todo]
+      const newList = [...prev, todo]
+      localStorage.setItem("list", JSON.stringify(newList))
+      return newList
     })
   }
   function clearList() {
     setList([])
+    localStorage.removeItem("list")
   }
   function clearDones() {
     setList((prev) => {
-      const newArr = prev.filter((e) => !e.done)
-      return newArr
+      const newList = prev.filter((e) => !e.done)
+      localStorage.setItem("list", JSON.stringify(newList))
+      return newList
     })
   }
+  function setLoadList() {
+    const storageList = localStorage.getItem("list")
+    if (!storageList) return
+    setList(JSON.parse(storageList))
+  }
+
+  useEffect(() => {
+    setLoadList()
+  }, [])
   return (
     <div className='App'>
       <h1 className='title'>Todo App</h1>

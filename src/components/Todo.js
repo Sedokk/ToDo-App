@@ -1,31 +1,39 @@
 import Btn from "./Btn"
 import style from "../css/Todo.module.css"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
-export default function Todo({ text, setList, data }) {
+export default function Todo({ todoObj, setList }) {
   const [isDone, setIsDone] = useState(false)
   function done(ev) {
     const id = Number(ev.target.closest("div").dataset.id)
     setList((prev) => {
-      const copy = Object.assign([], prev)
-      const elem = copy.find((e) => e.id === id)
+      const newList = Object.assign([], prev)
+      const elem = newList.find((e) => e.id === id)
       elem.done = !elem.done
-      return copy
+      localStorage.setItem("list", JSON.stringify(newList))
+      return newList
     })
     setIsDone(!isDone)
   }
   function remove(ev) {
     const id = Number(ev.target.closest("div").dataset.id)
     setList((prev) => {
-      const copy = Object.assign([], prev)
-      const ind = copy.findIndex((e) => e.id === id)
-      copy.splice(ind, 1)
-      return copy
+      const newList = Object.assign([], prev)
+      const ind = newList.findIndex((e) => e.id === id)
+      newList.splice(ind, 1)
+      localStorage.setItem("list", JSON.stringify(newList))
+      return newList
     })
   }
+  useEffect(() => {
+    setIsDone(todoObj.done)
+  }, [])
   return (
-    <div className={isDone ? style.wrapperDone : style.wrapper} data-id={data}>
-      <p className={style.text}>{text}</p>
+    <div
+      className={isDone ? style.wrapperDone : style.wrapper}
+      data-id={todoObj.id}
+    >
+      <p className={style.text}>{todoObj.text}</p>
       <Btn mod='aquamarine' onClick={done}>
         <svg
           enableBackground='new 0 0 91 91'
