@@ -1,8 +1,22 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import style from "../css/Form.module.css"
 
 export default function Form({ addTodo }) {
   const [value, setValue] = useState("")
+
+  function inputHandler(ev) {
+    setValue(ev.target.value)
+    localStorage.setItem("input", ev.target.value)
+  }
+
+  function setLoadValue() {
+    if (!localStorage.getItem("input")) return
+    setValue(localStorage.getItem("input"))
+  }
+
+  useEffect(() => {
+    setLoadValue()
+  }, [])
 
   return (
     <form
@@ -12,6 +26,7 @@ export default function Form({ addTodo }) {
         if (!value) return
         addTodo(value)
         setValue("")
+        localStorage.removeItem("input")
       }}
     >
       <input
@@ -19,7 +34,7 @@ export default function Form({ addTodo }) {
         className={style.input}
         placeholder='Enter new ToDo'
         value={value}
-        onChange={(ev) => setValue(ev.target.value)}
+        onChange={inputHandler}
       />
       <button type='submit' className={style.btn}>
         Submit

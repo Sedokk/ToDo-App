@@ -31,6 +31,7 @@ export default function App() {
       <h1 className='title'>Todo App</h1>
       <Form addTodo={addTodo} />
       <Btns clearList={clearList} clearDones={clearDones} />
+      {list.length === 0 && <h1>There is no Todos...</h1>}
       <TodoList list={list} setList={setList} />
     </div>
   )
