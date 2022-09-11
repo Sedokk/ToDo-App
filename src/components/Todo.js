@@ -33,7 +33,9 @@ export default function Todo({ todoObj, setList }) {
       className={isDone ? style.wrapperDone : style.wrapper}
       data-id={todoObj.id}
     >
-      <p className={style.text}>{todoObj.text}</p>
+      <div className={style.textWrapper}>
+        <p className={style.text}>{todoObj.text}</p>
+      </div>
       <Btn mod='aquamarine' onClick={done}>
         <svg
           enableBackground='new 0 0 91 91'
