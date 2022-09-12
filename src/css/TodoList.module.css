@@ -5,3 +5,9 @@
   align-items: center;
   justify-content: flex-start;
 }
+
+@media screen and (max-width: 800px) {
+  .wrapper {
+    gap: 10px 0;
+  }
+}

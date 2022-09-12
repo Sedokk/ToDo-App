@@ -34,7 +34,7 @@
   transition: color 0.3s ease, background-color 0.3s ease;
 }
 
-.btn:hover {
+.btn:active {
   color: white;
   background-color: rgb(68, 160, 129);
 }
@@ -52,5 +52,11 @@
     font-size: 17px;
     background-color: white;
     transition: color 0.3s ease, background-color 0.3s ease;
+  }
+}
+
+@media (hover) {
+  .btn:hover {
+    background-color: rgb(79, 192, 154);
   }
 }
